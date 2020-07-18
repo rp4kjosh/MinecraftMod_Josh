@@ -1,0 +1,23 @@
+{
+  "item.rp4kmod.titanium_pickaxe": "Titanium Pickaxe",
+  "item.rp4kmod.titanium_axe": "Titanium Axe",
+  "item.rp4kmod.titanium_sword": "Titanium Sword",
+  "item.rp4kmod.titanium_spade": "Titanium Spade",
+  "item.rp4kmod.titanium_hoe": "Titanium Hoe",
+  "item.rp4kmod.titanium": "Titanium",
+  "item.rp4kmod.titanium_ingot": "Titanium Ingot",
+  "item.rp4kmod.titanium_helmet": "Titanium Helmet",
+  "item.rp4kmod.titanium_chestplate": "Titanium Chestplate",
+  "item.rp4kmod.titanium_leggings": "Titanium Leggings",
+  "item.rp4kmod.titanium_boots": "Titanium Boots",
+  "item.rp4kmod.bomb": "Bomb",
+  "item.rp4kmod.wand": "Lightning Wand",
+  "item.rp4kmod.penguin_egg": "Penguin Egg",
+
+  "block.rp4kmod.titanium_ore_block": "Titanium Ore",
+
+  "commands.hello": "Hello, %s!",
+
+  "itemGroup.rp4ktab": "RP4K Tab"
+}
+

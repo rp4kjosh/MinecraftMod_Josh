@@ -1,0 +1,18 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "rp4kmod:items/titaniumspade"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [ 0, -90, 55 ],
+      "translation": [ 0, 4, 0.5 ],
+      "scale": [ 0.85, 0.85, 0.85 ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [ 0, -90, 55 ],
+      "translation": [ 0, 4, 0.5 ],
+      "scale": [ 0.85, 0.85, 0.85 ]
+    }
+  }
+}
