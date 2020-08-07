@@ -9,8 +9,6 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 @Mod.EventBusSubscriber(modid = RP4KMod.MOD_ID)
 public class ModEvents {
 
-
-
     @SubscribeEvent
     public static void onServerStarting(final FMLServerStartingEvent event){
         HelloCommand.register(event.getCommandDispatcher());

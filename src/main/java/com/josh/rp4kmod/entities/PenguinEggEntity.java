@@ -62,5 +62,4 @@ public class PenguinEggEntity extends ProjectileItemEntity {
     public IPacket<?> createSpawnPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
-
 }

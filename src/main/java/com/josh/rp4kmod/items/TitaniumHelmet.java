@@ -8,6 +8,6 @@ public class TitaniumHelmet extends ArmorItem {
 
     public TitaniumHelmet() {
 
-        super(ArmorMaterial.DIAMOND, EquipmentSlotType.HEAD, (new Item.Properties()).group(RP4KMod.TAB));
+        super(ModArmorMaterial.TITANIUM, EquipmentSlotType.HEAD, (new Item.Properties()).group(RP4KMod.TAB));
     }
 }

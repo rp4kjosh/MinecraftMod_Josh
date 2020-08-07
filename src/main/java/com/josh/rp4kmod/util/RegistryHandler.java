@@ -2,15 +2,19 @@ package com.josh.rp4kmod.util;
 
 import com.josh.rp4kmod.RP4KMod;
 import com.josh.rp4kmod.blocks.BlockItemBase;
+import com.josh.rp4kmod.blocks.BouncyBlock;
 import com.josh.rp4kmod.blocks.TitaniumOreBlock;
 import com.josh.rp4kmod.entities.BombEntity;
 import com.josh.rp4kmod.entities.PenguinEggEntity;
 import com.josh.rp4kmod.entities.PenguinEntity;
 import com.josh.rp4kmod.items.*;
+import com.josh.rp4kmod.world.biomes.BouncyBiome;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -23,14 +27,13 @@ public class RegistryHandler {
     public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, RP4KMod.MOD_ID);
     public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, RP4KMod.MOD_ID);
     public static final DeferredRegister<EntityType<?>> ENTITIES = new DeferredRegister<>(ForgeRegistries.ENTITIES, RP4KMod.MOD_ID);
+    public static final DeferredRegister<Biome> BIOMES = new DeferredRegister<>(ForgeRegistries.BIOMES, RP4KMod.MOD_ID);
 
     public static void init(){
-
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
-
-
+        BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     // Items
@@ -48,9 +51,12 @@ public class RegistryHandler {
 
     // Blocks
     public static final RegistryObject<Block> TITANIUM_ORE_BLOCK = BLOCKS.register("titanium_ore_block", TitaniumOreBlock::new);
+    public static final RegistryObject<Block> BOUNCY_BLOCK = BLOCKS.register("bouncy_block", BouncyBlock::new);
 
     // Block Items
     public static final RegistryObject<Item> TITANIUM_BLOCK_ITEM = ITEMS.register("titanium_ore_block", () -> new BlockItemBase(TITANIUM_ORE_BLOCK.get()));
+    public static final RegistryObject<Item> BOUNCY_BLOCK_ITEM = ITEMS.register("bouncy_block", () -> new BlockItemBase(BOUNCY_BLOCK.get()));
+
 
     //Armor Items
     public static final RegistryObject<Item> TITANIUM_HELMET = ITEMS.register("titanium_helmet", TitaniumHelmet::new);
@@ -65,6 +71,7 @@ public class RegistryHandler {
                             .size(0.5f, 0.5f)
                             .build("bomb")
             );
+
     public static final RegistryObject<EntityType<PenguinEntity>> PENGUIN_ENTITY = ENTITIES
             .register("penguin",
                     () -> EntityType.Builder.<PenguinEntity>create(PenguinEntity::new, EntityClassification.CREATURE)
@@ -78,4 +85,16 @@ public class RegistryHandler {
                             .size(0.5f, 0.5f)
                             .build("penguin_egg")
             );
+
+    //Biomes
+    public static final RegistryObject<Biome> BOUNCY_BIOME = BIOMES.register("bouncy_biome", BouncyBiome::new);
+
+    public static void registerBiomes(){
+        registerBiome(BOUNCY_BIOME.get(), BiomeDictionary.Type.PLAINS, BiomeDictionary.Type.MAGICAL);
+    }
+
+    public static void registerBiome(Biome biome, BiomeDictionary.Type... types){
+        BiomeDictionary.addTypes(biome, types);
+        BiomeManager.addSpawnBiome(biome);
+    }
 }

@@ -9,6 +9,6 @@ public class TitaniumChestplate extends ArmorItem {
 
     public TitaniumChestplate() {
 
-        super(ArmorMaterial.DIAMOND, EquipmentSlotType.CHEST, (new Properties()).group(RP4KMod.TAB));
+        super(ModArmorMaterial.TITANIUM, EquipmentSlotType.CHEST, (new Properties()).group(RP4KMod.TAB));
     }
 }

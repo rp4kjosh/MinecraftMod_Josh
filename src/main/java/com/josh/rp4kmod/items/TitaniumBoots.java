@@ -9,6 +9,6 @@ public class TitaniumBoots extends ArmorItem {
 
     public TitaniumBoots() {
 
-        super(ArmorMaterial.DIAMOND, EquipmentSlotType.FEET, (new Properties()).group(RP4KMod.TAB));
+        super(ModArmorMaterial.TITANIUM, EquipmentSlotType.FEET, (new Properties()).group(RP4KMod.TAB));
     }
 }

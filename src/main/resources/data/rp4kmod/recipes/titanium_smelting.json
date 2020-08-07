@@ -1,6 +1,6 @@
 {
   "type": "minecraft:smelting",
-  "ingredient": { "tag": "rp4kmod:titanium_ore" },
+  "ingredient": { "item": "rp4kmod:titanium" },
   "result": "rp4kmod:titanium_ingot",
   "experience": 100,
   "cookingtime": 50

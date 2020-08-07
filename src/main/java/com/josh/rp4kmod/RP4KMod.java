@@ -8,10 +8,14 @@ import com.josh.rp4kmod.world.gen.OreGenerator;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.*;
@@ -42,21 +46,15 @@ public class RP4KMod
 
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
 
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
-
-        RenderingRegistry.registerEntityRenderingHandler( RegistryHandler.BOMB_ENTITY.get(), renderManager -> new SpriteRenderer<BombEntity>(renderManager, Minecraft.getInstance().getItemRenderer()));
-        RenderingRegistry.registerEntityRenderingHandler( RegistryHandler.PENGUIN_ENTITY.get(), PenguinRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler( RegistryHandler.PENGUIN_EGG_ENTITY.get(), renderManager -> new SpriteRenderer<PenguinEggEntity>(renderManager, Minecraft.getInstance().getItemRenderer()));
-
-        LOGGER.debug("Registered Entity Renderers.");
     }
 
     public static final ItemGroup TAB = new ItemGroup("rp4ktab") {
-
         @Override
         public ItemStack createIcon() {
             return new ItemStack(RegistryHandler.TITANIUM_PICKAXE.get());
@@ -66,6 +64,11 @@ public class RP4KMod
     @SubscribeEvent
     public static void loadCompleteEvent(FMLLoadCompleteEvent event) {
         OreGenerator.generateOre();
+    }
+
+    @SubscribeEvent
+    public static void onRegisterBiomes(final RegistryEvent.Register<Biome> event){
+        RegistryHandler.registerBiomes();
     }
 
 }

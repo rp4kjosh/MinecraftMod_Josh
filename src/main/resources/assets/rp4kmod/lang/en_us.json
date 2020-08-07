@@ -15,6 +15,11 @@
   "item.rp4kmod.penguin_egg": "Penguin Egg",
 
   "block.rp4kmod.titanium_ore_block": "Titanium Ore",
+  "block.rp4kmod.bouncy_block": "Bouncy Block",
+
+  "entity.rp4kmod.penguin": "Penguin",
+
+  "biome.rp4kmod.bouncy_biome": "Bouncy Biome",
 
   "commands.hello": "Hello, %s!",
 

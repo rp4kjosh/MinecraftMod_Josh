@@ -15,7 +15,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterial implements IArmorMaterial {
-    TITANIUM(RP4KMod.MOD_ID + ":titanium", 5, new int[]{3, 5, 7, 3}, 15, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, () -> {
+    TITANIUM( "rp4kmod:titanium", 5, new int[]{3, 5, 7, 3}, 15, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 1.0F, () -> {
         return Ingredient.fromItems(RegistryHandler.TITANIUM_INGOT.get());
     });
 

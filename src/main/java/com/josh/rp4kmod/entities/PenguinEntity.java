@@ -5,7 +5,9 @@ import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.IPacket;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
@@ -30,6 +32,22 @@ public class PenguinEntity extends AnimalEntity {
     }
 
     /**
+     * Registers actions for the penguin to do during it's life
+     * Now a penguin can float on water, panic when hit, look at you when you walk by, and more.
+     *
+     */
+    @Override
+    protected void registerGoals() {
+        super.registerGoals();
+        this.goalSelector.addGoal(0, new SwimGoal(this));
+        this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
+        this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
+        this.goalSelector.addGoal(3, new FollowParentGoal(this, 1.1D));
+        this.goalSelector.addGoal(4, new LookAtGoal(this, PlayerEntity.class, 6.0F));
+        this.goalSelector.addGoal(5, new LookRandomlyGoal(this));
+    }
+
+    /**
      * Creates a child new entity from the parent entity.
      * Can be used to set additional on the child entity based on the parent.
      *
@@ -39,7 +57,7 @@ public class PenguinEntity extends AnimalEntity {
     @Override
     public PenguinEntity createChild(final AgeableEntity parent) {
         // Use getType to support overrides in subclasses
-        return (PenguinEntity) getType().create(this.world);
+        return RegistryHandler.PENGUIN_ENTITY.get().create(this.world);
     }
 
     /**

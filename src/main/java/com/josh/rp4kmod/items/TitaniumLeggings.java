@@ -9,6 +9,6 @@ public class TitaniumLeggings extends ArmorItem {
 
     public TitaniumLeggings() {
 
-        super(ArmorMaterial.DIAMOND, EquipmentSlotType.LEGS, (new Properties()).group(RP4KMod.TAB));
+        super(ModArmorMaterial.TITANIUM, EquipmentSlotType.LEGS, (new Properties()).group(RP4KMod.TAB));
     }
 }
